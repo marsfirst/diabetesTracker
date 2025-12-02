@@ -1,0 +1,571 @@
+/* ============================================================================
+   DIABETES TRACKER - Accessibility-First Stylesheet
+   Design for older adults: Large fonts, high contrast, minimal clutter
+   ============================================================================ */
+
+:root {
+    /* Colors - High Contrast */
+    --primary-blue: #0056b3;
+    --primary-green: #28a745;
+    --warning-red: #dc3545;
+    --warning-orange: #ff9800;
+    --light-bg: #f8f9fa;
+    --dark-text: #212529;
+    --border-color: #dee2e6;
+    
+    /* Fonts - Large and Readable */
+    --base-size: 18px;
+    --heading-size: 32px;
+    --subtitle-size: 24px;
+    --button-size: 20px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 18px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ============================================================================
+   DISCLAIMER - Always Visible
+   ============================================================================ */
+
+.disclaimer {
+    background-color: #fff3cd;
+    border: 3px solid #ff9800;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+}
+
+/* ============================================================================
+   HEADER
+   ============================================================================ */
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #0056b3 0%, #28a745 100%);
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: var(--heading-size);
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: var(--subtitle-size);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.subtext {
+    font-size: 20px;
+    opacity: 0.95;
+}
+
+/* ============================================================================
+   MAIN CONTENT
+   ============================================================================ */
+
+main {
+    min-height: 400px;
+}
+
+/* ============================================================================
+   CARDS & SECTIONS
+   ============================================================================ */
+
+.card {
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.card h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: var(--primary-blue);
+}
+
+.card p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* ============================================================================
+   DASHBOARD GRID
+   ============================================================================ */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* ============================================================================
+   BUTTONS
+   ============================================================================ */
+
+.btn {
+    font-size: var(--button-size);
+    padding: 18px 28px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #003d82;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 86, 179, 0.3);
+}
+
+.btn-secondary {
+    background-color: var(--primary-green);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #1e7e34;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.btn-large {
+    width: 100%;
+    padding: 20px;
+    font-size: 22px;
+    margin-top: 20px;
+}
+
+/* ============================================================================
+   FORMS
+   ============================================================================ */
+
+.form-container {
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--dark-text);
+}
+
+.form-group small {
+    display: block;
+    font-size: 16px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* ============================================================================
+   RECOMMENDATION BOX
+   ============================================================================ */
+
+.recommendation {
+    background: #e7f3ff;
+    border-left: 5px solid var(--primary-blue);
+    border-radius: 6px;
+    padding: 25px;
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.recommendation h3 {
+    font-size: 22px;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+.recommendation p {
+    color: var(--dark-text);
+    line-height: 1.8;
+}
+
+/* ============================================================================
+   TABLES
+   ============================================================================ */
+
+.history-section {
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.history-section h2 {
+    font-size: 24px;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 18px;
+}
+
+th {
+    background-color: var(--light-bg);
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+    color: var(--primary-blue);
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+tr:hover {
+    background-color: #f0f0f0;
+}
+
+.no-data {
+    font-size: 18px;
+    color: #999;
+    text-align: center;
+    padding: 30px;
+}
+
+/* ============================================================================
+   STATS BOX
+   ============================================================================ */
+
+.stats-box {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    margin: 25px 0;
+}
+
+.stats-box h3 {
+    font-size: 22px;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+.stats-box p {
+    font-size: 18px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.stats-box strong {
+    color: var(--dark-text);
+}
+
+.stats-box span {
+    color: var(--primary-green);
+    font-weight: 700;
+    font-size: 20px;
+}
+
+/* ============================================================================
+   DEMO CONTAINERS
+   ============================================================================ */
+
+.demo-container {
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.demo-container h2 {
+    font-size: 24px;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+.demo-container p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.cache-items,
+.queue-section,
+.history-section {
+    background: #f8f9fa;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 25px 0;
+}
+
+.cache-items h3,
+.queue-section h3,
+.history-section h3 {
+    font-size: 22px;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+#itemsList,
+#queueList,
+#historyList {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--dark-text);
+}
+
+/* ============================================================================
+   FORM BOX
+   ============================================================================ */
+
+.form-box {
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    margin: 25px 0;
+}
+
+.form-box h3 {
+    font-size: 22px;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+/* ============================================================================
+   CONTROLS
+   ============================================================================ */
+
+.controls {
+    background: #f8f9fa;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    margin: 25px 0;
+}
+
+.controls h3 {
+    font-size: 22px;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+/* ============================================================================
+   DEBUG OUTPUT
+   ============================================================================ */
+
+.debug-output {
+    background: #1e1e1e;
+    color: #00ff00;
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 25px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    min-height: 100px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+}
+
+/* ============================================================================
+   FOOTER
+   ============================================================================ */
+
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+    border-top: 2px solid var(--border-color);
+    color: #666;
+    font-size: 16px;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    header {
+        padding: 20px 15px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    .subtitle {
+        font-size: 20px;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .btn {
+        font-size: 18px;
+        padding: 15px 20px;
+    }
+
+    table {
+        font-size: 16px;
+    }
+
+    th, td {
+        padding: 12px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --base-size: 16px;
+        --heading-size: 24px;
+        --button-size: 18px;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 12px 16px;
+    }
+}
+
+/* ============================================================================
+   ACCESSIBILITY - Print Styles
+   ============================================================================ */
+
+@media print {
+    .btn,
+    header {
+        background-color: #000 !important;
+        color: white !important;
+    }
+
+    body {
+        background-color: white;
+    }
+}

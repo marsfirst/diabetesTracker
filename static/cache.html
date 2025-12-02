@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cache Demo - Diabetes Tracker</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Medical Disclaimer -->
+        <div class="disclaimer">
+            <strong>⚠️ Educational Demo:</strong> This page demonstrates LRU caching concepts from Computer Organization & Architecture.
+        </div>
+
+        <!-- Header -->
+        <header>
+            <h1>🔄 LRU Cache Demo</h1>
+            <p class="subtitle">Computer Organization & Architecture</p>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <div class="demo-container">
+                <h2>What is an LRU Cache?</h2>
+                <p>
+                    An LRU (Least Recently Used) Cache is a data structure that stores frequently accessed items 
+                    in fast memory. When the cache is full, it removes the least recently used item to make room for new ones.
+                </p>
+                <p><strong>Use case:</strong> CPU caches, web browser caches, database query caches.</p>
+
+                <!-- Cache Stats -->
+                <div class="stats-box" id="stats">
+                    <h3>📊 Cache Statistics</h3>
+                    <p><strong>Capacity:</strong> <span id="capacity">0</span></p>
+                    <p><strong>Current Size:</strong> <span id="size">0</span></p>
+                    <p><strong>Cache Hits:</strong> <span id="hits">0</span></p>
+                    <p><strong>Cache Misses:</strong> <span id="misses">0</span></p>
+                </div>
+
+                <!-- Cache Items -->
+                <div class="cache-items" id="cacheItems">
+                    <h3>🔍 Cached Items (Least to Most Recent)</h3>
+                    <div id="itemsList">No items in cache</div>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <h3>Try It Out</h3>
+                    <div class="form-group">
+                        <label for="readingId">Reading ID to Cache:</label>
+                        <input type="number" id="readingId" placeholder="1" min="1" max="1000">
+                        <button onclick="loadToCache()" class="btn btn-primary">Load to Cache</button>
+                    </div>
+                    <button onclick="refreshCache()" class="btn btn-secondary">Refresh Stats</button>
+                </div>
+
+                <!-- Debug Output -->
+                <div class="debug-output" id="output"></div>
+
+                <!-- Back Button -->
+                <div style="margin-top: 30px; text-align: center;">
+                    <a href="/static/index.html" class="btn btn-secondary">← Back to Home</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>This is an educational demonstration of caching concepts.</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/cache.js"></script>
+</body>
+</html>

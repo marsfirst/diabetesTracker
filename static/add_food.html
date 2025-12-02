@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Food - Diabetes Tracker</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Medical Disclaimer -->
+        <div class="disclaimer">
+            <strong>⚠️ Medical Disclaimer:</strong> This app is for educational/demo purposes only. 
+            It is not a medical device. Consult a licensed healthcare provider for medical guidance.
+        </div>
+
+        <!-- Header -->
+        <header>
+            <h1>🍽️ Log Food</h1>
+            <p class="subtitle">Record What You Eat</p>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <div class="form-container">
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="date">📅 Date</label>
+                        <input type="date" id="date" name="date" value="{{ today }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="time">🕐 Time</label>
+                        <input type="time" id="time" name="time" value="{{ now }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="food">🍴 What did you eat?</label>
+                        <textarea id="food" name="food" placeholder="Example: Chicken salad with olive oil, glass of water" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">Save Food</button>
+                </form>
+
+                <!-- Back Button -->
+                <div style="margin-top: 20px; text-align: center;">
+                    <a href="/static/index.html" class="btn btn-secondary">← Back to Home</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>This is not medical advice. For concerns, contact your doctor.</p>
+        </footer>
+    </div>
+</body>
+</html>

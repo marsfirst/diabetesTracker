@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheduler Demo - Diabetes Tracker</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Medical Disclaimer -->
+        <div class="disclaimer">
+            <strong>⚠️ Educational Demo:</strong> This page demonstrates priority scheduling concepts from Computer Organization & Architecture.
+        </div>
+
+        <!-- Header -->
+        <header>
+            <h1>⏱️ Priority Scheduler Demo</h1>
+            <p class="subtitle">Computer Organization & Architecture</p>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <div class="demo-container">
+                <h2>What is a Priority Scheduler?</h2>
+                <p>
+                    A Priority Scheduler manages tasks based on their urgency. Tasks with higher priority 
+                    (lower numbers) run first. This is how operating systems manage CPU time for different processes.
+                </p>
+                <p><strong>Use case:</strong> OS task scheduling, job queuing, real-time systems.</p>
+
+                <!-- Add Task Form -->
+                <div class="form-box">
+                    <h3>➕ Submit New Task</h3>
+                    <div class="form-group">
+                        <label for="taskName">Task Name:</label>
+                        <input type="text" id="taskName" placeholder="e.g., Doctor reminder" value="Doctor reminder">
+                    </div>
+                    <div class="form-group">
+                        <label for="priority">Priority (1=high, 10=low):</label>
+                        <input type="number" id="priority" min="1" max="10" value="5">
+                    </div>
+                    <div class="form-group">
+                        <label for="ticks">Ticks to Run:</label>
+                        <input type="number" id="ticks" min="1" max="10" value="2">
+                    </div>
+                    <button onclick="submitTask()" class="btn btn-primary">Submit Task</button>
+                </div>
+
+                <!-- Queue Section -->
+                <div class="queue-section">
+                    <h3>📋 Current Queue</h3>
+                    <div id="queueList">Loading...</div>
+                </div>
+
+                <!-- Run Scheduler -->
+                <div class="controls">
+                    <h3>Run Scheduler</h3>
+                    <div class="form-group">
+                        <label for="runTicks">Run for how many ticks?</label>
+                        <input type="number" id="runTicks" min="1" max="10" value="1">
+                    </div>
+                    <button onclick="runScheduler()" class="btn btn-primary">Run Ticks</button>
+                </div>
+
+                <!-- History Section -->
+                <div class="history-section">
+                    <h3>📜 Execution History</h3>
+                    <div id="historyList">No tasks executed yet</div>
+                </div>
+
+                <!-- Debug Output -->
+                <div class="debug-output" id="output"></div>
+
+                <!-- Back Button -->
+                <div style="margin-top: 30px; text-align: center;">
+                    <a href="/static/index.html" class="btn btn-secondary">← Back to Home</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>This is an educational demonstration of scheduling concepts.</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/scheduler.js"></script>
+</body>
+</html>

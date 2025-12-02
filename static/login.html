@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Diabetes Tracker</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Medical Disclaimer -->
+        <div class="disclaimer">
+            <strong>⚠️ Medical Disclaimer:</strong> This app is for educational/demo purposes only. 
+            It is not a medical device. Consult a licensed healthcare provider for medical guidance.
+        </div>
+
+        <!-- Header -->
+        <header>
+            <h1>🩺 Welcome</h1>
+            <p class="subtitle">Login to Your Account</p>
+        </header>
+
+        <!-- Login Form -->
+        <main>
+            <div class="form-container">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">📧 Email</label>
+                        <input type="email" id="email" name="email" value="user@example.com" required>
+                        <small>Demo login: any email works</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pin">🔐 PIN (4 digits)</label>
+                        <input type="text" id="pin" name="pin" maxlength="4" placeholder="1234" value="1234" required>
+                        <small>Demo PIN: 1234</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">Login</button>
+                </form>
+
+                <div id="message" style="margin-top: 20px; padding: 15px; border-radius: 8px; display: none;"></div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>This is not medical advice. For concerns, contact your doctor.</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const pin = document.getElementById('pin').value;
+            const messageDiv = document.getElementById('message');
+
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, pin })
+                });
+
+                const data = await response.json();
+
+                if (data.ok) {
+                    localStorage.setItem('user_id', data.user.id);
+                    localStorage.setItem('email', data.user.email);
+                    
+                    messageDiv.textContent = '✓ Login successful! Redirecting...';
+                    messageDiv.style.backgroundColor = '#d4edda';
+                    messageDiv.style.color = '#155724';
+                    messageDiv.style.display = 'block';
+                    
+                    setTimeout(() => {
+                        window.location.href = '/static/index.html';
+                    }, 1500);
+                } else {
+                    throw new Error(data.error);
+                }
+            } catch (error) {
+                messageDiv.textContent = '❌ Error: ' + error.message;
+                messageDiv.style.backgroundColor = '#f8d7da';
+                messageDiv.style.color = '#721c24';
+                messageDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

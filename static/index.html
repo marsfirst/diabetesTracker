@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Tracker - Home</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Medical Disclaimer -->
+        <div class="disclaimer">
+            <strong>⚠️ Medical Disclaimer:</strong> This app is for educational/demo purposes only. 
+            It is not a medical device. Consult a licensed healthcare provider for medical guidance.
+        </div>
+
+        <!-- Header -->
+        <header>
+            <h1>🩺 Diabetes Tracker</h1>
+            <p class="subtitle">Simple and Friendly</p>
+            <p class="subtext">Log blood sugar. Record meals. Get gentle suggestions.</p>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <div class="dashboard">
+                <!-- Log Sugar Section -->
+                <div class="card">
+                    <h2>📊 Log Blood Sugar</h2>
+                    <p>Record your glucose reading and get a personalized suggestion.</p>
+                    <a href="/add-reading" class="btn btn-primary">Log Sugar</a>
+                </div>
+
+                <!-- Log Food Section -->
+                <div class="card">
+                    <h2>🍽️ Log Food</h2>
+                    <p>Keep track of what you eat throughout the day.</p>
+                    <a href="/add-food" class="btn btn-primary">Log Food</a>
+                </div>
+
+                <!-- View History Section -->
+                <div class="card">
+                    <h2>📈 View History</h2>
+                    <p>See all your readings and meals in one place.</p>
+                    <a href="/history" class="btn btn-primary">View History</a>
+                </div>
+
+                <!-- Cache Demo Section -->
+                <div class="card">
+                    <h2>🔄 Cache Demo</h2>
+                    <p>See how computer memory caching works!</p>
+                    <a href="/static/cache.html" class="btn btn-secondary">Open Cache Demo</a>
+                </div>
+
+                <!-- Scheduler Demo Section -->
+                <div class="card">
+                    <h2>⏱️ Scheduler Demo</h2>
+                    <p>Learn about task scheduling with priorities.</p>
+                    <a href="/static/scheduler.html" class="btn btn-secondary">Open Scheduler Demo</a>
+                </div>
+
+                <!-- Export Section -->
+                <div class="card">
+                    <h2>📥 Export Data</h2>
+                    <p>Download your readings as CSV.</p>
+                    <button onclick="exportData()" class="btn btn-secondary">Export CSV</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>This is not medical advice. For concerns, contact your doctor.</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+    <script>
+        function exportData() {
+            const userId = localStorage.getItem('user_id') || 1;
+            fetch(`/api/export?user_id=${userId}`)
+                .then(r => r.json())
+                .then(data => {
+                    if (data.ok) {
+                        // Create a blob and download
+                        const blob = new Blob([data.csv], { type: 'text/csv' });
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = 'diabetes-readings.csv';
+                        a.click();
+                        alert('✓ CSV exported!');
+                    } else {
+                        alert('Error: ' + data.error);
+                    }
+                })
+                .catch(e => alert('Error: ' + e));
+        }
+    </script>
+</body>
+</html>

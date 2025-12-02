@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Blood Sugar - Diabetes Tracker</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Medical Disclaimer -->
+        <div class="disclaimer">
+            <strong>⚠️ Medical Disclaimer:</strong> This app is for educational/demo purposes only. 
+            It is not a medical device. Consult a licensed healthcare provider for medical guidance.
+        </div>
+
+        <!-- Header -->
+        <header>
+            <h1>📊 Log Blood Sugar</h1>
+            <p class="subtitle">Record Your Glucose Reading</p>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <div class="form-container">
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="date">📅 Date</label>
+                        <input type="date" id="date" name="date" value="{{ today }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="time">🕐 Time</label>
+                        <input type="time" id="time" name="time" value="{{ now }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="glucose">🩸 Blood Sugar (mg/dL)</label>
+                        <input type="number" id="glucose" name="glucose" placeholder="120" min="20" max="500" step="0.1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="context">🎯 When?</label>
+                        <select id="context" name="context">
+                            <option value="fasting">Fasting (before eating)</option>
+                            <option value="pre-meal">Before a meal</option>
+                            <option value="post-meal">After a meal</option>
+                            <option value="bedtime">Before bed</option>
+                            <option value="other">Other time</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meal">🍽️ What did you eat/drink?</label>
+                        <select id="meal" name="meal">
+                            <option value="">Nothing</option>
+                            <option value="water">Water only</option>
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                            <option value="snack">Snack</option>
+                            <option value="juice">Juice/Soda</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="note">📝 Notes (optional)</label>
+                        <textarea id="note" name="note" placeholder="How are you feeling? Any comments?"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">Submit Reading</button>
+                </form>
+
+                <!-- Recommendation Section -->
+                {% if recommendation %}
+                <div class="recommendation">
+                    <h3>💡 Your Suggestion</h3>
+                    <p>{{ recommendation }}</p>
+                </div>
+                {% endif %}
+
+                <!-- Back Button -->
+                <div style="margin-top: 20px; text-align: center;">
+                    <a href="/" class="btn btn-secondary">← Back to Home</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>This is not medical advice. For concerns, contact your doctor.</p>
+        </footer>
+    </div>
+</body>
+</html>

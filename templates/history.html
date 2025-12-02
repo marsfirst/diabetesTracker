@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - Diabetes Tracker</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Medical Disclaimer -->
+        <div class="disclaimer">
+            <strong>⚠️ Medical Disclaimer:</strong> This app is for educational/demo purposes only. 
+            It is not a medical device. Consult a licensed healthcare provider for medical guidance.
+        </div>
+
+        <!-- Header -->
+        <header>
+            <h1>📈 History</h1>
+            <p class="subtitle">Your Readings & Meals</p>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Blood Sugar Readings Section -->
+            <div class="history-section">
+                <h2>🩸 Blood Sugar Readings</h2>
+                {% if readings %}
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Level</th>
+                                <th>Context</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for reading in readings %}
+                            <tr>
+                                <td>{{ reading.date }}</td>
+                                <td>{{ reading.time }}</td>
+                                <td class="glucose-level" data-level="{{ reading.glucose }}">{{ reading.glucose }} mg/dL</td>
+                                <td>{{ reading.context }}</td>
+                                <td>{{ reading.note }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <p class="no-data">No readings recorded yet.</p>
+                {% endif %}
+            </div>
+
+            <!-- Food Log Section -->
+            <div class="history-section">
+                <h2>🍽️ Food Log</h2>
+                {% if foods %}
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Food</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for food in foods %}
+                            <tr>
+                                <td>{{ food.date }}</td>
+                                <td>{{ food.time }}</td>
+                                <td>{{ food.food }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <p class="no-data">No food logged yet.</p>
+                {% endif %}
+            </div>
+
+            <!-- Back Button -->
+            <div style="margin-top: 30px; text-align: center;">
+                <a href="/" class="btn btn-secondary">← Back to Home</a>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>This is not medical advice. For concerns, contact your doctor.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Color code glucose levels
+        document.querySelectorAll('.glucose-level').forEach(cell => {
+            const level = parseFloat(cell.getAttribute('data-level'));
+            if (level > 180) {
+                cell.style.color = '#d32f2f';
+                cell.style.fontWeight = 'bold';
+            } else if (level < 70) {
+                cell.style.color = '#f57c00';
+                cell.style.fontWeight = 'bold';
+            } else {
+                cell.style.color = '#388e3c';
+            }
+        });
+    </script>
+</body>
+</html>
